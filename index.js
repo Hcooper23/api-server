@@ -8,6 +8,7 @@ const clothesRoutes = require('./src/routes/clothes');
 const NotFoundHandler = require('./src/error-handlers/404');
 const ErrorHandler = require('./src/error-handlers/500');
 
+const DATABASE_URL = process.env.NODE_ENV === 'test' ? 'sqlite:memory:' :process.env.DATABASE_URL;
 
 const sequelize = new Sequelize({
   dialect: 'postgres', 
