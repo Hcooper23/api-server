@@ -37,4 +37,4 @@ to run tests, after running `npm i`, run the command `npm test`
 
 ## UML
 
-![UML image](./UML.jpeg)
+![Express REST API](./Express%20REST%20API.png)
