@@ -2,7 +2,10 @@ const express = require('express');
 const router = express.Router();
 const Clothes = require('../models/clothes');
 
-router.post('/', async (req, res) => {
+const app = express();
+app.use(express.json);
+
+router.post('/clothes', async (req, res) => {
   try {
     const { name, size, color } = req.body;
     const clothes = await Clothes.create({ name, size, color });
@@ -12,7 +15,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/', async (req, res) => {
+router.get('/clothes', async (req, res) => {
   try {
     const clothes = await Clothes.findAll();
     res.status(200).json(clothes);
@@ -39,7 +42,7 @@ router.put('/:id', async (req, res) => {
     const { name, size, color } = req.body;
     const updatedClothes = await Clothes.update({ name, size, color }, {
       where: { id: req.params.id },
-      returning: true
+      returning: true,
     });
     if (updatedClothes[0] === 0) {
       res.status(404).json({ error: 'Record not found' });
