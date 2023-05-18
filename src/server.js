@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
-const foodRoutes = require('./routes/foodRoutes');
-const clothesRoutes = require('./routes/clothesRoutes');
+const foodRoutes = require('./routes/food');
+const clothesRoutes = require('./routes/clothes');
 
 app.use(express.json());
 
@@ -19,6 +19,8 @@ app.use((err, req, res, next) => {
 });
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
+module.exports = app;
