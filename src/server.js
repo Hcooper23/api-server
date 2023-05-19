@@ -2,13 +2,21 @@ const express = require('express');
 const app = express();
 const foodRoutes = require('./routes/food');
 const clothesRoutes = require('./routes/clothes');
+const Food = require('./models/food');
+const Clothes = require('./models/clothes');
+const Collection = require('./collection');
 
 app.use(express.json());
 
-app.use('/food', foodRoutes);
+// Create new instances of the collection using the models
+const foodCollection = new Collection(Food);
+const clothesCollection = new Collection(Clothes);
 
-app.use('/clothes', clothesRoutes);
+// Use the router modules and pass the collection instances
+app.use('/food', foodRoutes(foodCollection));
+app.use('/clothes', clothesRoutes(clothesCollection));
 
+// Error handling middleware
 app.use((req, res) => {
   res.status(404).json({ error: 'Route not found' });
 });
@@ -23,4 +31,4 @@ const server = app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
-module.exports = app;
+module.exports = server;
