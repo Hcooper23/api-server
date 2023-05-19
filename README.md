@@ -9,7 +9,7 @@ Build a REST API using Express, by creating a proper series of endpoints that pe
 ## Links and Resources
 
 - [GitHub Actions ci/cd](https://github.com/Hcooper23/api-server/actions)
-- [back-end dev server url](https://devbasicexpressserver.onrender.com/)
+- [back-end dev server url](https://lab04-hn6w.onrender.com/)
 
 ## Collaborators
 
