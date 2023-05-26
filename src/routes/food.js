@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const router = express.Router();
-const Food = require('../models/food');
+const { Food } = require('../models/food');
 
 router.use(bodyParser.json());
 
@@ -17,6 +17,7 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
+    console.log ('i am here')
     const foods = await Food.findAll();
     res.status(200).json(foods);
   } catch (error) {
